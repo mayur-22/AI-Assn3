@@ -3,22 +3,23 @@
 #include <sstream>
 using namespace std;
 
-int main(){
+int main(int argc,char** argv){
 
-    ifstream file("test.temp");
+    string filename = argv[1];
+    ifstream file(filename+".temp");
     int n,m;
     file>>n>>m;
-    cout<<n<<" "<<m<<endl;
+    // cout<<n<<" "<<m<<endl;
     file.close();
 
 
-    ifstream rfile("test.satoutput");
+    ifstream rfile(filename+".satoutput");
     string str;
     getline(rfile,str);
-    cout<<str;
+    // cout<<str;
 
 
-    ofstream wfile("test.mapping");
+    ofstream wfile(filename+".mapping");
     if(str.compare("UNSAT")==0){
         wfile<< "0";
         wfile.close();
@@ -50,3 +51,4 @@ int main(){
 
 
 }
+

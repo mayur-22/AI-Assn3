@@ -2,9 +2,11 @@
 #include<fstream>
 using namespace std;
 
-int main()
+int main(int argc, char** argv)
 {
-	ifstream file("test.graphs");
+
+	string filename = argv[1];
+	ifstream file(filename+".graphs");
 	bool flag = true;
 	int a,b;
 	int m=-1,n=-1;
@@ -30,7 +32,7 @@ int main()
 
 	}
 
-	ofstream wfile("test.temp");
+	ofstream wfile(filename+".temp");
 	wfile<<to_string(n)<<" "<<to_string(m)<<"\n";
 	wfile.close();
 
@@ -62,19 +64,19 @@ int main()
 
 	}
 
-	for(int i=0;i<m;i++){
-		for(int j=0;j<m;j++)
-			cout<<gPhone[i][j]<<" ";
-		cout<<endl;
-	}
+	// for(int i=0;i<m;i++){
+	// 	for(int j=0;j<m;j++)
+	// 		cout<<gPhone[i][j]<<" ";
+	// 	cout<<endl;
+	// }
 
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++)
-			cout<<gEmail[i][j]<<" ";
-		cout<<endl;
-	}
+	// for(int i=0;i<n;i++){
+	// 	for(int j=0;j<n;j++)
+	// 		cout<<gEmail[i][j]<<" ";
+	// 	cout<<endl;
+	// }
 
-	ofstream wrfile("test.satinput");
+	ofstream wrfile(filename+".satinput");
 	string str = "";
 
 	//atleast one of them is true;
@@ -148,7 +150,7 @@ int main()
 				if(k!=i){
 					for(int l=0;l<m;l++){
 						if(l!=j){
-							cout<<i<<j<<k<<l<<endl;
+							// cout<<i<<j<<k<<l<<endl;
 							//binded k and l
 							int id2 = k*m+1+l;
 							int temp = n*m + i*(n-1);
@@ -162,7 +164,7 @@ int main()
 								temp2 += l+1;
 							else
 								temp2 += l;
-							cout<<id1<<" "<<id2<<" "<<temp<<" "<<temp2<<"\n";
+							// cout<<id1<<" "<<id2<<" "<<temp<<" "<<temp2<<"\n";
 
 							if(gEmail[i][k]==1)
 								str += "-"+to_string(id1) + "-"+to_string(id2) + " "+to_string(temp2) + " 0\n";
